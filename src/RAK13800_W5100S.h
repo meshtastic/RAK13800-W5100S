@@ -50,6 +50,7 @@
 
 #include <Arduino.h>
 #include "Client.h"
+#include "w5100.h" //FIXME
 #include "Udp.h"
 
 #ifdef _VARIANT_RAK11200_
@@ -85,6 +86,7 @@ class EthernetClass {
 private:
 	static IPAddress _dnsServerAddress;
 	static DhcpClass* _dhcp;
+
 public:
 	// Initialise the Ethernet shield to use the provided MAC address and
 	// gain the rest of the configuration through DHCP.
@@ -99,7 +101,7 @@ public:
 	static void begin(uint8_t *mac, IPAddress ip, IPAddress dns);
 	static void begin(uint8_t *mac, IPAddress ip, IPAddress dns, IPAddress gateway);
 	static void begin(uint8_t *mac, IPAddress ip, IPAddress dns, IPAddress gateway, IPAddress subnet);
-	static void init(uint8_t sspin = 10);
+	static void init(uint8_t sspin = 10, SPIClass& spi = SPI, SPISettings spi_settings = SPI_ETHERNET_SETTINGS);
 
 	static void MACAddress(uint8_t *mac_address);
 	static IPAddress localIP();

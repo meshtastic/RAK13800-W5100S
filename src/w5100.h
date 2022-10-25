@@ -306,6 +306,10 @@ private:
   static uint8_t isW5200(void);
   static uint8_t isW5500(void);
 
+public:  
+  static SPIClass* _SPIx;
+  static SPISettings _spi_settings;  
+
 public:
   static uint8_t getChip(void) { return chip; }
 #ifdef ETHERNET_LARGE_BUFFERS
@@ -335,6 +339,7 @@ public:
     return false;
   }
   static void setSS(uint8_t pin) { ss_pin = pin; }
+  static void selectSPI(SPIClass& spi, SPISettings spi_settings) { _SPIx = &spi; _spi_settings = spi_settings; }
 
 private:
 #if defined(__AVR__)
