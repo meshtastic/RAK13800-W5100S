@@ -182,9 +182,9 @@ uint16_t EthernetClient::localPort()
 {
 	if (sockindex >= MAX_SOCK_NUM) return 0;
 	uint16_t port;
-	W5100._SPIx->beginTransaction(W5100._spi_settings);
+	SPI1.beginTransaction(SPI_ETHERNET_SETTINGS);
 	port = W5100.readSnPORT(sockindex);
-	W5100._SPIx->endTransaction();
+	SPI1.endTransaction();
 	return port;
 }
 
@@ -194,9 +194,9 @@ IPAddress EthernetClient::remoteIP()
 {
 	if (sockindex >= MAX_SOCK_NUM) return IPAddress((uint32_t)0);
 	uint8_t remoteIParray[4];
-	W5100._SPIx->beginTransaction(W5100._spi_settings);
+	SPI1.beginTransaction(SPI_ETHERNET_SETTINGS);
 	W5100.readSnDIPR(sockindex, remoteIParray);
-	W5100._SPIx->endTransaction();
+	SPI1.endTransaction();
 	return IPAddress(remoteIParray);
 }
 
@@ -206,8 +206,8 @@ uint16_t EthernetClient::remotePort()
 {
 	if (sockindex >= MAX_SOCK_NUM) return 0;
 	uint16_t port;
-	W5100._SPIx->beginTransaction(W5100._spi_settings);
+	SPI1.beginTransaction(SPI_ETHERNET_SETTINGS);
 	port = W5100.readSnDPORT(sockindex);
-	W5100._SPIx->endTransaction();
+	SPI1.endTransaction();
 	return port;
 }
