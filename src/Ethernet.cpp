@@ -102,6 +102,11 @@ void EthernetClass::init(SPIClass& spi, uint8_t sspin)
 	W5100.setSPI(spi);
 }
 
+void EthernetClass::init(uint8_t sspin)
+{
+	W5100.setSS(sspin);
+}
+
 EthernetLinkStatus EthernetClass::linkStatus()
 {
 	switch (W5100.getLinkStatus()) {
