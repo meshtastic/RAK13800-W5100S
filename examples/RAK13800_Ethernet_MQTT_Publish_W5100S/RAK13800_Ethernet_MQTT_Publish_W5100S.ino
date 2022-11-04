@@ -59,7 +59,7 @@ void setup()
   }
   Serial.println("RAK13800 Ethernet MQTT Publish example.");
 
-  Ethernet.init( SS );  // Set CS pin.
+  Ethernet.init( SPI,SS );
   Ethernet.begin(mac, ip);  // Start the Ethernet connection:
 
   if (Ethernet.hardwareStatus() == EthernetNoHardware)  // Check for Ethernet hardware present

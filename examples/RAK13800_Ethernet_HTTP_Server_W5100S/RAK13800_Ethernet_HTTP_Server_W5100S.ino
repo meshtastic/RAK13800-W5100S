@@ -50,7 +50,7 @@ void setup()
   }
   Serial.println("RAK13800 Ethernet HTTP Server example.");
   
-  Ethernet.init( SS );  // Start Ethernet.
+  Ethernet.init( SPI,SS );
   Ethernet.begin(mac, ip, gateway, subnet); // Initialize ethernet.
   server.begin(); // Start the server
 }

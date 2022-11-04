@@ -54,7 +54,7 @@ void setup()
   }
   Serial.println("RAK13800 Ethernet HTTP Client example.");
 
-  Ethernet.init( SS );
+  Ethernet.init( SPI,SS );
   Serial.println("Initialize Ethernet with DHCP:");
   if (Ethernet.begin(mac) == 0) // Start the Ethernet connection.
   {

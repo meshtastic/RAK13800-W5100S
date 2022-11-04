@@ -51,6 +51,7 @@
 #include <Arduino.h>
 #include "Client.h"
 #include "Udp.h"
+#include <SPI.h>
 
 #ifdef _VARIANT_RAK11200_
 	#include "RewriteServer.h"
@@ -100,6 +101,7 @@ public:
 	static void begin(uint8_t *mac, IPAddress ip, IPAddress dns, IPAddress gateway);
 	static void begin(uint8_t *mac, IPAddress ip, IPAddress dns, IPAddress gateway, IPAddress subnet);
 	static void init(uint8_t sspin = 10);
+	static void init(SPIClass& spi_device, uint8_t sspin);
 
 	static void MACAddress(uint8_t *mac_address);
 	static IPAddress localIP();
