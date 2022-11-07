@@ -46,7 +46,7 @@ void setup()
   }
   Serial.println("RAK13800 Ethernet TCP Client example.");
 
-  Ethernet.init( SS );
+  Ethernet.init( SPI,SS );
   Ethernet.begin(mac, ip);
 
   if (Ethernet.hardwareStatus() == EthernetNoHardware)  // Check for Ethernet hardware present.

@@ -50,7 +50,7 @@ void setup()
   }
   Serial.println("RAK13800 Ethernet TCP Server W5100S example.");
 
-  Ethernet.init( SS );
+  Ethernet.init( SPI,SS );
   Ethernet.begin(mac, ip, myDns, gateway, subnet);
   
   if (Ethernet.hardwareStatus() == EthernetNoHardware)  // Check for Ethernet hardware present.
